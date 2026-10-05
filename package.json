@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Collapses thinking blocks and tool output in Pi, toggled with one shortcut.",
+  "description": "Collapses thinking blocks in Pi, toggled with one shortcut or a click.",
   "license": "MIT",
   "author": "Yishen Tu",
   "repository": {

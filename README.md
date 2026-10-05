@@ -1,8 +1,8 @@
 # Collapse
 
-Collapses thinking blocks and tool output in [Pi](https://github.com/earendil-works/pi), toggled with one shortcut.
+Collapses thinking blocks in [Pi](https://github.com/earendil-works/pi), toggled with one shortcut or a click.
 
-Every session starts collapsed: thinking blocks show as a one-line `Thinking…` hint and tool output uses Pi's collapsed view. One keypress expands or collapses both.
+Every session starts with thinking blocks collapsed to a one-line `Thinking…` hint. One keypress expands or collapses them all. Tool output stays on Pi's own **Ctrl+O**.
 
 ## Install
 
@@ -20,15 +20,19 @@ pi -e git:github.com/YishenTu/pi-collapse
 
 | Key | Action |
 | --- | --- |
-| **Ctrl+Shift+O** or **Alt+O** | Expand or collapse thinking and tool output |
-| `/collapse` | Toggle |
-| `/collapse on` / `/collapse off` | Expand / collapse |
+| **Ctrl+Shift+O** or **Alt+O** | Expand or collapse all thinking blocks |
+| Click a thinking block | Expand or collapse just that block |
+| **Ctrl+O** (Pi built-in) | Expand or collapse tool output |
+| `/collapse` | Toggle thinking and tool output together |
+| `/collapse thinking` / `/collapse tools` | Toggle just one |
+| `/collapse [thinking\|tools] on` / `off` | Expand / collapse |
 
-`/collapse` also accepts `show`/`expand`/`open` and `hide`/`collapse`/`close`.
+`/collapse` also accepts `show`/`expand`/`open` and `hide`/`collapse`/`close`. When thinking and tool output are in different states, a plain `/collapse` collapses both.
 
 ## Good to know
 
 - Nothing is written to settings; each new session starts collapsed.
+- The shortcut and `/collapse` apply to every thinking block and reset blocks you clicked open or shut.
 - Pi's own hidden-thinking setting (**Ctrl+T**) takes precedence. If it's on when you expand, you'll get a one-time warning.
 - Toggling resets Pi's collapsed-thinking label to its default.
 

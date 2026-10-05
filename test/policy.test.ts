@@ -3,7 +3,8 @@ import test from "node:test";
 import {
 	COLLAPSED_THINKING,
 	isCollapsedThinking,
-	parseCollapseArgument,
+	nextExpanded,
+	parseCollapseCommand,
 	TOGGLE_SHORTCUTS,
 } from "../src/policy.ts";
 
@@ -19,12 +20,25 @@ test("names the expand shortcut in the collapsed hint", () => {
 	assert.match(COLLAPSED_THINKING, new RegExp(TOGGLE_SHORTCUTS[0].replace(/\+/g, "\\+")));
 });
 
-test("parses collapse arguments", () => {
-	assert.equal(parseCollapseArgument(""), undefined);
-	assert.equal(parseCollapseArgument("   "), undefined);
-	assert.equal(parseCollapseArgument("on"), true);
-	assert.equal(parseCollapseArgument(" SHOW "), true);
-	assert.equal(parseCollapseArgument("off"), false);
-	assert.equal(parseCollapseArgument("Collapse"), false);
-	assert.equal(parseCollapseArgument("sideways"), "invalid");
+test("parses collapse commands", () => {
+	assert.deepEqual(parseCollapseCommand(""), { target: "both", expand: undefined });
+	assert.deepEqual(parseCollapseCommand("   "), { target: "both", expand: undefined });
+	assert.deepEqual(parseCollapseCommand("on"), { target: "both", expand: true });
+	assert.deepEqual(parseCollapseCommand(" SHOW "), { target: "both", expand: true });
+	assert.deepEqual(parseCollapseCommand("Collapse"), { target: "both", expand: false });
+	assert.deepEqual(parseCollapseCommand("thinking"), { target: "thinking", expand: undefined });
+	assert.deepEqual(parseCollapseCommand("tools off"), { target: "tools", expand: false });
+	assert.deepEqual(parseCollapseCommand("tool  open"), { target: "tools", expand: true });
+	assert.equal(parseCollapseCommand("sideways"), "invalid");
+	assert.equal(parseCollapseCommand("thinking sideways"), "invalid");
+	assert.equal(parseCollapseCommand("on thinking"), "invalid");
+	assert.equal(parseCollapseCommand("thinking on off"), "invalid");
+});
+
+test("toggles to collapsed when anything targeted is expanded", () => {
+	assert.equal(nextExpanded(undefined, [false, false]), true);
+	assert.equal(nextExpanded(undefined, [true, false]), false);
+	assert.equal(nextExpanded(undefined, [true, true]), false);
+	assert.equal(nextExpanded(true, [true, true]), true);
+	assert.equal(nextExpanded(false, [false]), false);
 });
