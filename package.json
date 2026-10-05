@@ -1,0 +1,18 @@
+{
+  "name": "pi-collapse",
+  "private": true,
+  "type": "module",
+  "description": "Collapses thinking blocks and tool output, toggled with one shortcut.",
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "scripts": {
+    "check": "tsc --noEmit && node --experimental-strip-types --check index.ts",
+    "test": "node --experimental-strip-types --test tests/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2"
+  }
+}
