@@ -1,18 +1,40 @@
 {
   "name": "pi-collapse",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Collapses thinking blocks and tool output, toggled with one shortcut.",
+  "description": "Collapses thinking blocks and tool output in Pi, toggled with one shortcut.",
+  "license": "MIT",
+  "author": "Yishen Tu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YishenTu/pi-collapse.git"
+  },
+  "homepage": "https://github.com/YishenTu/pi-collapse#readme",
+  "bugs": {
+    "url": "https://github.com/YishenTu/pi-collapse/issues"
+  },
+  "keywords": [
+    "pi-package"
+  ],
   "pi": {
     "extensions": [
-      "./index.ts"
+      "./src/index.ts"
     ]
   },
+  "engines": {
+    "node": ">=22.19.0"
+  },
   "scripts": {
-    "check": "tsc --noEmit && node --experimental-strip-types --check index.ts",
-    "test": "node --experimental-strip-types --test tests/*.test.ts"
+    "check": "tsc --noEmit",
+    "test": "node --test test/*.test.ts"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
   },
   "devDependencies": {
-    "@types/node": "^26.1.2"
+    "@earendil-works/pi-coding-agent": "1.0.2",
+    "typescript": "5.9.3",
+    "@types/node": "22.19.19"
   }
 }

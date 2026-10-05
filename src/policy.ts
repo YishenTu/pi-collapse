@@ -1,7 +1,7 @@
 /**
  * Pure decisions for the collapse extension: what a shortcut/command asks for and
- * what a collapsed thinking block renders as. Kept free of Pi APIs so the checks
- * in `tsconfig.json` and `tests/` can run without the Pi type package.
+ * what a collapsed thinking block renders as. Kept free of Pi APIs so the unit
+ * tests can run without a Pi host.
  */
 
 /** Shortcuts that expand or collapse thinking blocks and tool output. */

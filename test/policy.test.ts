@@ -5,7 +5,7 @@ import {
 	isCollapsedThinking,
 	parseCollapseArgument,
 	TOGGLE_SHORTCUTS,
-} from "../policy.ts";
+} from "../src/policy.ts";
 
 test("collapses only thinking blocks", () => {
 	assert.equal(isCollapsedThinking("assistant-thinking", false), true);
